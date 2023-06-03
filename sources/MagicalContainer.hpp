@@ -3,6 +3,7 @@
 #ifndef SP2_EX5A_MAGICALCONTAINER_H
 #define SP2_EX5A_MAGICALCONTAINER_H
 #include <vector>
+
 namespace ariel {
     class MagicalContainer {
         // Private attributes.

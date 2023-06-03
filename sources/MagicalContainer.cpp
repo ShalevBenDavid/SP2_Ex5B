@@ -17,7 +17,7 @@ void MagicalContainer :: addElement (int element) {
     // Insert element to the end of the container.
     _sorted_container.push_back(element);
     // Sort item into place in O(n).
-    for (unsigned long i = _sorted_container.size() - 1; i > 0; i--) {
+    for (size_t i = _sorted_container.size() - 1; i > 0; i--) {
         // Swap items until we get it in his place.
         if (_sorted_container.at(i) < _sorted_container.at(i - 1)) {
             swap(_sorted_container.at(i), _sorted_container.at(i - 1));
@@ -25,7 +25,7 @@ void MagicalContainer :: addElement (int element) {
     }
     // Update the prime container in O(n).
     _prime_container.clear();
-    for (unsigned long i = 0; i < _sorted_container.size(); i++) {
+    for (size_t i = 0; i < _sorted_container.size(); i++) {
         if (PrimeIterator :: isPrime(_sorted_container.at(i))) {
             _prime_container.push_back(&_sorted_container.at(i));
         }
