@@ -3,6 +3,7 @@
 #ifndef SP2_EX5A_MAGICALCONTAINER_H
 #define SP2_EX5A_MAGICALCONTAINER_H
 #include <vector>
+
 namespace ariel {
     class MagicalContainer {
         // Private attributes.
@@ -25,9 +26,14 @@ namespace ariel {
             size_t _index;
 
         public:
-            // Constructors.
-            AscendingIterator (MagicalContainer& container, size_t index = 0); // Default constructor.
-            AscendingIterator (const AscendingIterator&); // Copy constructor.
+            // Default constructor..
+            AscendingIterator (MagicalContainer& container, size_t index = 0) : _container(container), _index(index) {
+                // If index is out of the containers bound, throw.
+                if (index > container._sorted_container.size()) { throw invalid_argument("Invalid index.\n"); }
+            }
+
+            // Copy constructor.
+            AscendingIterator (const AscendingIterator& other) : _container(other._container), _index(other._index) {}
 
             // Destructor.
             ~AscendingIterator () = default;
@@ -36,7 +42,7 @@ namespace ariel {
             AscendingIterator& operator = (const AscendingIterator&);
 
             // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-            int& operator * ();
+            const int& operator * () const;
 
             // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
             AscendingIterator& operator ++ ();
@@ -67,9 +73,14 @@ namespace ariel {
             size_t _index;
 
         public:
-            // Constructors.
-            SideCrossIterator (MagicalContainer& container, size_t index = 0); // Default.
-            SideCrossIterator (const SideCrossIterator&); // Copy.
+            // Default constructor..
+            SideCrossIterator (MagicalContainer& container, size_t index = 0) : _container(container), _index(index) {
+                // If index is out of the containers bound, throw.
+                if (index > container._sorted_container.size()) { throw invalid_argument("Invalid index.\n"); }
+            }
+
+            // Copy constructor.
+            SideCrossIterator (const SideCrossIterator& other) : _container(other._container), _index(other._index) {}
 
             // Destructor.
             ~SideCrossIterator () = default;
@@ -78,7 +89,7 @@ namespace ariel {
             SideCrossIterator &operator = (const SideCrossIterator&);
 
             // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-            int &operator * ();
+            const int& operator * () const;
 
             // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
             SideCrossIterator& operator ++ ();
@@ -109,9 +120,14 @@ namespace ariel {
             size_t _index;
 
         public:
-            // Constructors.
-            PrimeIterator (MagicalContainer& container, size_t index = 0);
-            PrimeIterator (const PrimeIterator&);
+            // Default constructor..
+            PrimeIterator (MagicalContainer& container, size_t index = 0) : _container(container), _index(index) {
+                // If index is out of the containers bound, throw.
+                if (index > container._prime_container.size()) { throw invalid_argument("Invalid index.\n"); }
+            }
+
+            // Copy constructor.
+            PrimeIterator (const PrimeIterator& other) : _container(other._container), _index(other._index) {}
 
             // Destructor.
             ~PrimeIterator () = default;
@@ -123,7 +139,7 @@ namespace ariel {
             PrimeIterator& operator = (const PrimeIterator&);
 
             // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-            int &operator * ();
+            const int& operator * () const;
 
             // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
             PrimeIterator &operator ++ ();
