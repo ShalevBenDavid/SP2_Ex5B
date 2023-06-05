@@ -3,11 +3,10 @@
 #include "MagicalContainer.hpp"
 #include <cmath>
 #include <iostream>
-#include <stdexcept>
 using namespace std;
 using namespace ariel;
 
-// -------------------------------- Class: Magical contained --------------------------------
+// -------------------------------- Class: MagicalContainer --------------------------------
 
 /**
  * Adds an element to the container.

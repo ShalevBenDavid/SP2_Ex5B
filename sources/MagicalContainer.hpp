@@ -3,6 +3,7 @@
 #ifndef SP2_EX5A_MAGICALCONTAINER_H
 #define SP2_EX5A_MAGICALCONTAINER_H
 #include <vector>
+#include <stdexcept>
 
 namespace ariel {
     class MagicalContainer {
@@ -29,7 +30,7 @@ namespace ariel {
             // Default constructor..
             AscendingIterator (MagicalContainer& container, size_t index = 0) : _container(container), _index(index) {
                 // If index is out of the containers bound, throw.
-                if (index > container._sorted_container.size()) { throw invalid_argument("Invalid index.\n"); }
+                if (index > container._sorted_container.size()) { throw std :: invalid_argument("Invalid index.\n"); }
             }
 
             // Copy constructor.
@@ -76,7 +77,7 @@ namespace ariel {
             // Default constructor..
             SideCrossIterator (MagicalContainer& container, size_t index = 0) : _container(container), _index(index) {
                 // If index is out of the containers bound, throw.
-                if (index > container._sorted_container.size()) { throw invalid_argument("Invalid index.\n"); }
+                if (index > container._sorted_container.size()) { throw std :: invalid_argument("Invalid index.\n"); }
             }
 
             // Copy constructor.
@@ -123,7 +124,7 @@ namespace ariel {
             // Default constructor..
             PrimeIterator (MagicalContainer& container, size_t index = 0) : _container(container), _index(index) {
                 // If index is out of the containers bound, throw.
-                if (index > container._prime_container.size()) { throw invalid_argument("Invalid index.\n"); }
+                if (index > container._prime_container.size()) { throw std :: invalid_argument("Invalid index.\n"); }
             }
 
             // Copy constructor.
