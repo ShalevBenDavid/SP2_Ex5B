@@ -2,9 +2,7 @@
 
 #ifndef SP2_EX5A_MAGICALCONTAINER_H
 #define SP2_EX5A_MAGICALCONTAINER_H
-#include "MagicalIterator.hpp"
 #include <vector>
-
 namespace ariel {
     class MagicalContainer {
         // Private attributes.
@@ -21,66 +19,132 @@ namespace ariel {
         size_t size() const;
 
         // --------------------------- Class: AscendingIterator ---------------------------
-        class AscendingIterator : MagicalIterator {
+        class AscendingIterator {
+        private:
+            MagicalContainer& _container;
+            size_t _index;
+
         public:
-            // Default constructor.
-            AscendingIterator (MagicalContainer& container, size_t index = 0) : MagicalIterator(container, index) {}
-            // Copy constructor.
-            AscendingIterator (const AscendingIterator& other) : MagicalIterator(other) {}
+            // Constructors.
+            AscendingIterator (MagicalContainer& container, size_t index = 0); // Default constructor.
+            AscendingIterator (const AscendingIterator&); // Copy constructor.
+
+            // Destructor.
+            ~AscendingIterator () = default;
+
+            // <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
+            AscendingIterator& operator = (const AscendingIterator&);
 
             // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-            const int& operator * () const override;
+            int& operator * ();
 
             // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
-            AscendingIterator& operator ++ () override;
+            AscendingIterator& operator ++ ();
+
+            // Compare operators.
+            // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
+            bool operator == (const AscendingIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator != >>>>>>>>>>>>>>>>>>
+            bool operator != (const AscendingIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
+            bool operator > (const AscendingIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator < >>>>>>>>>>>>>>>>>>
+            bool operator < (const AscendingIterator&) const;
 
             // Begin and end operators.
-            AscendingIterator begin () const override;
-            AscendingIterator end () const override;
+            AscendingIterator begin () const;
+            AscendingIterator end () const;
+
+            // For Tidy.
+            AscendingIterator(AscendingIterator&&) noexcept; // Move Constructor.
+            AscendingIterator& operator = (AscendingIterator&&) noexcept; // Move assignment operator.
         };
 
         // --------------------------- Class: SideCrossIterator ---------------------------
-        class SideCrossIterator : MagicalIterator {
+        class SideCrossIterator {
+        private:
+            MagicalContainer& _container;
+            size_t _index;
+
         public:
-            // Default constructor.
-            SideCrossIterator (SideCrossIterator& container, size_t index = 0) : MagicalIterator(container, index) {}
-            // Copy constructor.
-            SideCrossIterator (const SideCrossIterator& other) : MagicalIterator(other) {}
+            // Constructors.
+            SideCrossIterator (MagicalContainer& container, size_t index = 0); // Default.
+            SideCrossIterator (const SideCrossIterator&); // Copy.
 
             // Destructor.
             ~SideCrossIterator () = default;
 
+            // <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
+            SideCrossIterator &operator = (const SideCrossIterator&);
+
             // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-            const int& operator * () const override;
+            int &operator * ();
 
             // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
-            SideCrossIterator& operator ++ () override;
+            SideCrossIterator& operator ++ ();
+
+            // Compare operators.
+            // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
+            bool operator == (const SideCrossIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator != >>>>>>>>>>>>>>>>>>
+            bool operator != (const SideCrossIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
+            bool operator > (const SideCrossIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator < >>>>>>>>>>>>>>>>>>
+            bool operator < (const SideCrossIterator&) const;
 
             // Begin and end operators.
-            SideCrossIterator begin () const override;
-            SideCrossIterator end () const override;
+            SideCrossIterator begin () const;
+            SideCrossIterator end () const;
+
+            // For Tidy.
+            SideCrossIterator(SideCrossIterator&&) noexcept; // Move Constructor.
+            SideCrossIterator& operator = (SideCrossIterator&&) noexcept; // Move assignment operator.
         };
 
         // --------------------------- Class: PrimeIterator ---------------------------
-        class PrimeIterator : MagicalIterator {
+        class PrimeIterator {
+        private:
+            MagicalContainer& _container;
+            size_t _index;
+
         public:
-            // Default constructor.
-            PrimeIterator (PrimeIterator& container, size_t index = 0) : MagicalIterator(container, index) {}
-            // Copy constructor.
-            PrimeIterator (const PrimeIterator& other) : MagicalIterator(other) {}
+            // Constructors.
+            PrimeIterator (MagicalContainer& container, size_t index = 0);
+            PrimeIterator (const PrimeIterator&);
+
+            // Destructor.
+            ~PrimeIterator () = default;
 
             // Methods.
             static bool isPrime (int);
 
+            // <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
+            PrimeIterator& operator = (const PrimeIterator&);
+
             // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-            const int& operator * () const override;
+            int &operator * ();
 
             // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
-            PrimeIterator& operator ++ () override;
+            PrimeIterator &operator ++ ();
+
+            // Compare operators.
+            // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
+            bool operator == (const PrimeIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator != >>>>>>>>>>>>>>>>>>
+            bool operator != (const PrimeIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
+            bool operator > (const PrimeIterator&) const;
+            // <<<<<<<<<<<<<<<<<< Operator < >>>>>>>>>>>>>>>>>>
+            bool operator < (const PrimeIterator&) const;
 
             // Begin and end operators.
-            PrimeIterator begin () const override;
-            PrimeIterator end () const override;
+            PrimeIterator begin () const;
+            PrimeIterator end () const;
+
+            // For Tidy.
+            PrimeIterator(PrimeIterator&&) noexcept; // Move Constructor.
+            PrimeIterator& operator = (PrimeIterator&&) noexcept; // Move assignment operator.
         };
     };
 }
