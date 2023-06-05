@@ -7,7 +7,7 @@
 namespace ariel {
     class MagicalIterator {
         // Private attributes.
-        MagicalContainer &_container;
+        MagicalContainer& _container;
         size_t _index;
 
     public:
@@ -24,13 +24,13 @@ namespace ariel {
         virtual ~MagicalIterator () = default;
 
         // <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
-        MagicalIterator& operator = (const AscendingIterator&);
+        MagicalIterator& operator = (const MagicalIterator&);
 
         // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
-        int& operator * ();
+        virtual int& operator * () = 0;
 
         // <<<<<<<<<<<<<<<<<< Prefix increment (++n) >>>>>>>>>>>>>>>>>>
-        MagicalIterator& operator ++ ();
+        virtual MagicalIterator& operator ++ () = 0;
 
         // Compare operators.
         // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
@@ -45,6 +45,14 @@ namespace ariel {
         // Begin and end operators.
         virtual MagicalIterator begin () const = 0;
         virtual MagicalIterator end () const = 0;
+
+        // Getters and setters.
+        MagicalContainer& getContainer () { return _container; }
+        size_t& getIndex () { return _index; }
+
+        // For Tidy.
+        MagicalIterator(MagicalIterator&&) noexcept; // Move Constructor.
+        MagicalIterator& operator = (MagicalIterator&&) noexcept; // Move assignment operator.
     };
 }
 
