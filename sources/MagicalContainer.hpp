@@ -4,6 +4,7 @@
 #define SP2_EX5A_MAGICALCONTAINER_H
 #include <vector>
 #include <stdexcept>
+#include <iostream>
 
 namespace ariel {
     class MagicalContainer {
