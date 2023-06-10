@@ -1,6 +1,7 @@
 // Created by Shalev Ben David.
 
 #include "MagicalContainer.hpp"
+#include "cmath"
 using namespace std;
 using namespace ariel;
 
@@ -37,11 +38,11 @@ MagicalContainer :: PrimeIterator& MagicalContainer :: PrimeIterator :: operator
 // Compare operators.
 // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: PrimeIterator :: operator == (const PrimeIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
-    // Two iterators are equal if their iterators and i
+    // Two prime iterators are equal if their indexes are equal.
     return (_index == other._index);
 }
 // <<<<<<<<<<<<<<<<<< Operator != >>>>>>>>>>>>>>>>>>
@@ -50,17 +51,17 @@ bool MagicalContainer :: PrimeIterator :: operator != (const PrimeIterator& othe
 }
 // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: PrimeIterator :: operator > (const PrimeIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
     return (_index > other._index);
 }
 // <<<<<<<<<<<<<<<<<< Operator < >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: PrimeIterator :: operator < (const PrimeIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
     return (_index < other._index);
 }

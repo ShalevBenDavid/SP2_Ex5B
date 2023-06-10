@@ -37,11 +37,11 @@ MagicalContainer :: AscendingIterator& MagicalContainer :: AscendingIterator :: 
 // Compare operators.
 // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: AscendingIterator :: operator == (const AscendingIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
-    // Two iterators are equal if their iterators and i
+    // Two Ascending iterators are equal if their indexes are equal.
     return (_index == other._index);
 }
 // <<<<<<<<<<<<<<<<<< Operator != >>>>>>>>>>>>>>>>>>
@@ -50,27 +50,27 @@ bool MagicalContainer :: AscendingIterator :: operator != (const AscendingIterat
 }
 // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: AscendingIterator :: operator > (const AscendingIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
     return (_index > other._index);
 }
 // <<<<<<<<<<<<<<<<<< Operator < >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: AscendingIterator :: operator < (const AscendingIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
     return (_index < other._index);
 }
 
 // Begin and end operators.
 MagicalContainer :: AscendingIterator MagicalContainer :: AscendingIterator :: begin () const {
-    // Return a AscendingIterator with index to the start.
+    // Return an AscendingIterator with index to the start.
     return AscendingIterator(_container, 0);
 }
 MagicalContainer :: AscendingIterator MagicalContainer :: AscendingIterator :: end () const {
-    // Return a AscendingIterator with index to the end.
+    // Return an AscendingIterator with index to the end.
     return AscendingIterator (_container, _container._sorted_container.size());
 }

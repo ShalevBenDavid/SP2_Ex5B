@@ -24,7 +24,7 @@ const int& MagicalContainer :: SideCrossIterator :: operator * () const {
     if (!(_index % 2)) {
         return _container._sorted_container.at(_index / 2);
     }
-        // If the index is odd, reduce by 1 and divide by half, and look from the end.
+    // If the index is odd, reduce by 1 and divide by half, and look from the end.
     else {
         return _container._sorted_container.at((_container._sorted_container.size() - 1 - (_index - 1 ) / 2));
     }
@@ -44,11 +44,11 @@ MagicalContainer :: SideCrossIterator& MagicalContainer :: SideCrossIterator :: 
 // Compare operators.
 // <<<<<<<<<<<<<<<<<< Operator == >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: SideCrossIterator :: operator == (const SideCrossIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
-    // Two iterators are equal if their iterators and i
+    // Two side cross iterators are equal if their indexes are equal.
     return (_index == other._index);
 }
 // <<<<<<<<<<<<<<<<<< Operator != >>>>>>>>>>>>>>>>>>
@@ -57,19 +57,19 @@ bool MagicalContainer :: SideCrossIterator :: operator != (const SideCrossIterat
 }
 // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
 bool MagicalContainer :: SideCrossIterator :: operator > (const SideCrossIterator& other) const {
-    // If no the same container, throw.
+    // If not the same container, throw.
     if (&_container != &other._container) {
-        throw runtime_error("Comparing iterators from different containers.");
+        throw runtime_error("Comparing iterators from different containers.\n");
     }
     // Initialize indexes.
     int index1 = _index;
     int index2 = other._index;
-    // Calculating side-cross index for this if not end iterator.
+    // Calculating side-cross index for this iterator if not pointing to the end.
     if (_index != _container._sorted_container.size()) {
         index1 = !(_index % 2) ?
                  (_index / 2) : (_container._sorted_container.size() - 1 - (_index - 1 ) / 2);
     }
-    // Calculating side-cross index for other if not end iterator.
+    // Calculating side-cross index for other iterator if not pointing to the end.
     if (other._index != _container._sorted_container.size()) {
         index2 = !(other._index % 2) ?
                  (other._index / 2) : (_container._sorted_container.size() - 1 - (other._index - 1) / 2);
