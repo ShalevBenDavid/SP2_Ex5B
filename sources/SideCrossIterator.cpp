@@ -20,6 +20,10 @@ MagicalContainer :: SideCrossIterator& MagicalContainer :: SideCrossIterator :: 
 
 // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
 const int& MagicalContainer :: SideCrossIterator :: operator * () const {
+    // If iterator point to the end, attempting to dereference should throw.
+    if (_index == _container._sorted_container.size()) {
+        throw runtime_error ("Cannot dereference end() iterator.\n");
+    }
     // If the index is even, reduce index by half.
     if (!(_index % 2)) {
         return _container._sorted_container.at(_index / 2);

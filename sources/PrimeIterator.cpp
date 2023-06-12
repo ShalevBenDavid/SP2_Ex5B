@@ -21,6 +21,10 @@ MagicalContainer :: PrimeIterator& MagicalContainer :: PrimeIterator :: operator
 
 // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
 const int& MagicalContainer :: PrimeIterator :: operator * () const {
+    // If iterator point to the end, attempting to dereference should throw.
+    if (_index == _container._prime_container.size()) {
+        throw runtime_error ("Cannot dereference end() iterator.\n");
+    }
     return *_container._prime_container.at(_index);
 }
 

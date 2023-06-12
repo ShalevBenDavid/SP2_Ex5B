@@ -20,6 +20,10 @@ MagicalContainer :: AscendingIterator& MagicalContainer :: AscendingIterator :: 
 
 // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
 const int& MagicalContainer :: AscendingIterator :: operator * () const {
+    // If iterator point to the end, attempting to dereference should throw.
+    if (_index == _container._sorted_container.size()) {
+        throw runtime_error ("Cannot dereference end() iterator.\n");
+    }
     return _container._sorted_container.at(_index);
 }
 
